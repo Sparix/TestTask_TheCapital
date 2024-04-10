@@ -7,7 +7,5 @@ api = NinjaAPI()
 api.add_router("/matrix/", router)  # You can add a router as an object
 
 urlpatterns = [
-    path("matrix/", api.urls, name="matrix"),
+    path("", api.urls, name="matrix"),
 ]
-
-app_name = "matrix"

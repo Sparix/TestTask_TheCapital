@@ -1,57 +1,32 @@
-# Тестове завдання з Python
+# Test Task The Capital
 
-## Умова
+## Description
 
-Необхідно реалізувати Python-бібліотеку, яка здійснює отримання квадратної матриці (NxN) з віддаленого сервера і повертає її користувачу у вигляді `List[int]`. Цей список повинен містити результат обходу отриманої матриці проти годинникової стрілки, починаючи з лівого верхнього кута (див. тестовий випадок нижче).
+This project implements a web application that retrieves a
+matrix from a remote server and returns it to the user
+in the form of a `List[int]`. The returned list contains
+the result of traversing the received matrix in a clockwise
+direction, starting from the top left corner.
 
-Приклад початкової матриці:
-```
-+-----+-----+-----+-----+
-|  10 |  20 |  30 |  40 |
-+-----+-----+-----+-----+
-|  50 |  60 |  70 |  80 |
-+-----+-----+-----+-----+
-|  90 | 100 | 110 | 120 |
-+-----+-----+-----+-----+
-| 130 | 140 | 150 | 160 |
-+-----+-----+-----+-----+
-```
+## Setup Instructions
 
-Матриця гарантовано містить цілі невід'ємні числа. Форматування границь іншими символами не передбачається.
+1. Clone the repository to your computer.
+    ```shell
+   git clone https://github.com/Sparix/TestTask_TheCapital.git
+   cd <project-directory>
+2. Create a virtual environment by running `python -m venv venv`.
+3. Activate the virtual environment:
+    - On Windows: `venv\Scripts\activate`
+    - On macOS and Linux: `source venv/bin/activate`
+4. Install the required dependencies `pip install -r requirements.txt`.
+5. Run migration `python manage.py migrate`
+6. Run the Django server `python manage.py runserver`.
+7. Access the application in your web browser at `http://127.0.0.1:8000/api/docs#/default`.
 
-## Вимоги до виконання та оформлення
+## Technologies Used
 
-- Бібліотека має містити функцію з таким інтерфейсом:
-
-    ```python
-    async def get_matrix(url: str) -> List[int]:
-        ...
-    ```
-
-- Функція єдиним аргументом отримує URL для завантаження матриці з сервера за протоколом HTTP(S).
-- Функція повертає список, що містить результат обходу отриманої матриці проти годинникової стрілки, починаючи з лівого верхнього кута.
-- Взаємодія з сервером має бути реалізована асинхронно - за допомогою aiohttp, httpx або іншого компонента на asyncio.
-- Бібліотека повинна коректно обробляти помилки сервера та мережеві помилки (5xx, Connection Timeout, Connection Refused і т. д.).
-- У майбутньому розмірність матриці може бути змінена зі збереженням формату. Бібліотека повинна зберегти свою працездатність на квадратних матрицях іншого розміру.
-- Рішення завдання необхідно розмістити на одному з публічних git-хостингів (GitHub, GitLab, Bitbucket). Можна також надіслати рішення у вигляді архіву (zip, tar). Завантажувати бібліотеку в PyPi або інші репозиторії не потрібно.
-
-## Перевірка рішення
-
-- Для самостійної перевірки можна використовувати наступний тестовий випадок:
-
-    ```python
-    SOURCE_URL = 'https://raw.githubusercontent.com/Real-Estate-THE-Capital/python-assignment/main/matrix.txt'
-    TRAVERSAL = [
-        10, 50, 90, 130,
-        140, 150, 160, 120,
-        80, 40, 30, 20,
-        60, 100, 110, 70,
-    ]
-
-    def test_get_matrix():
-        assert asyncio.run(get_matrix(SOURCE_URL)) == TRAVERSAL
-    ```
-
-Під час перевірки також буде звертатися увага на тести, типові вказівки, структуру рішення та загальну якість коду.
-
-Бажаємо успіху у виконанні завдання і не забувайте про [The Zen of Python](https://www.python.org/dev/peps/pep-0020/#the-zen-of-python)! :)
+- Django
+- Django Ninja
+- Python
+- aiohttp
+- BeautifulSoup
